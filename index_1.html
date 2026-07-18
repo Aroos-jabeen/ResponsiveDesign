@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intern2Grow - Login</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+  }
+
+  .container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  /* ===== Left Panel ===== */
+  .left-panel {
+    flex: 1;
+    position: relative;
+    background: linear-gradient(rgba(10, 15, 10, 0.55), rgba(10, 15, 10, 0.65)),
+                url('image.png') center/cover no-repeat;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 70px;
+    min-height: 500px;
+  }
+
+  .left-panel h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+
+  .left-panel p {
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 420px;
+    color: #f0f0f0;
+  }
+
+  /* ===== Right Panel ===== */
+  .right-panel {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 60px;
+    position: relative;
+  }
+
+  .signup-top {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .signup-top a {
+    color: #1a1a1a;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .form-wrapper {
+    max-width: 430px;
+    width: 100%;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-wrapper h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 28px;
+    color: #111;
+  }
+
+  .social-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #222;
+    cursor: pointer;
+    margin-bottom: 14px;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .social-btn:hover {
+    background: #f7f7f7;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  .social-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #999;
+    font-size: 0.8rem;
+    margin: 22px 0;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .divider span {
+    padding: 0 12px;
+  }
+
+  .field {
+    margin-bottom: 18px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.85rem;
+    color: #444;
+    margin-bottom: 6px;
+  }
+
+  .field-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .field-row .hide-toggle {
+    font-size: 0.8rem;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    user-select: none;
+    background: none;
+    border: none;
+  }
+
+  .field input[type="email"],
+  .field input[type="password"],
+  .field input[type="text"] {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .field input:focus {
+    border-color: #b08d3f;
+  }
+
+  .forgot-row {
+    text-align: right;
+    margin-bottom: 22px;
+  }
+
+  .forgot-row a {
+    font-size: 0.85rem;
+    color: #333;
+    text-decoration: underline;
+  }
+
+  .signin-btn {
+    width: 100%;
+    padding: 15px;
+    background: #b08d3f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background 0.2s ease;
+  }
+
+  .signin-btn:hover {
+    background: #967a35;
+  }
+
+  .signup-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .signup-bottom a {
+    color: #1a1a1a;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px) {
+    .left-panel {
+      padding: 40px 40px;
+    }
+
+    .left-panel h1 {
+      font-size: 2.3rem;
+    }
+
+    .right-panel {
+      padding: 30px 30px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .left-panel {
+      min-height: 320px;
+      padding: 40px 30px;
+    }
+
+    .left-panel h1 {
+      font-size: 2.2rem;
+    }
+
+    .right-panel {
+      padding: 30px 24px 50px;
+    }
+
+    .signup-top {
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .left-panel h1 {
+      font-size: 1.8rem;
+    }
+
+    .left-panel p {
+      font-size: 0.9rem;
+    }
+
+    .form-wrapper h2 {
+      font-size: 1.5rem;
+    }
+
+    .right-panel {
+      padding: 24px 18px 40px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <h1>Work with us</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+        lobortis maximus nunc, ac rhoncus odio congue quis. Sed ac semper
+        orci, eu porttitor lacus.
+      </p>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+
+      <div class="signup-top">
+        Don't have an account? <a href="#">Sign up</a>
+      </div>
+
+      <div class="form-wrapper">
+        <h2>Welcome back!</h2>
+
+        <button type="button" class="social-btn" onclick="alert('Continue with Google')">
+          <svg viewBox="0 0 48 48">
+            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
+              s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
+              s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039
+              l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
+              c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
+              c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24
+              C44,22.659,43.862,21.35,43.611,20.083z"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        <button type="button" class="social-btn" onclick="alert('Continue with Twitter')">
+          <svg viewBox="0 0 24 24" fill="#1DA1F2">
+            <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.897-.959-2.178-1.559-3.594-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.317 0-.626-.03-.928-.086.627 1.956 2.444 3.379 4.6 3.42-1.68 1.319-3.809 2.105-6.102 2.105-.396 0-.79-.023-1.176-.068 2.179 1.397 4.768 2.212 7.548 2.212 9.054 0 14.001-7.503 14.001-14.001 0-.214-.005-.426-.014-.637.961-.695 1.8-1.562 2.46-2.549z"/>
+          </svg>
+          Continue with Twitter
+        </button>
+
+        <div class="divider"><span>OR</span></div>
+
+        <div class="field">
+          <label for="email">Enter your email address</label>
+          <input type="email" id="email" name="email" placeholder="">
+        </div>
+
+        <div class="field">
+          <div class="field-row">
+            <label for="password">Enter your password</label>
+            <button type="button" class="hide-toggle" onclick="togglePassword()">
+              <span id="toggle-label">Hide</span>
+            </button>
+          </div>
+          <input type="password" id="password" name="password" placeholder="">
+        </div>
+
+        <div class="forgot-row">
+          <a href="#">Forget your password</a>
+        </div>
+
+        <button type="submit" class="signin-btn">Sign in</button>
+
+        <div class="signup-bottom">
+          Don't have an account? <a href="#">Sign up</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function togglePassword() {
+      const pw = document.getElementById('password');
+      const label = document.getElementById('toggle-label');
+      if (pw.type === 'password') {
+        pw.type = 'text';
+        label.textContent = 'Show';
+      } else {
+        pw.type = 'password';
+        label.textContent = 'Hide';
+      }
+    }
+  </script>
+
+</body>
+</html>
