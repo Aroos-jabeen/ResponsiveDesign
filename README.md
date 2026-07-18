@@ -1,3 +1,4 @@
+
 # Intern2Grow - Login Page
 
 A responsive login page built with pure HTML and CSS, based on the Intern2Grow Figma design.
@@ -40,5 +41,43 @@ cd intern2grow-login-page
 # Just open index.html in your browser — no build step required
 ```
 
-## 📄 License
-Free to use for learning and internship project purposes.
+# Ahmed Saber - Portfolio2Grow
+
+A responsive personal portfolio landing page built with pure HTML and CSS, based on the Intern2Grow Figma design.
+
+## 🔗 Live Preview
+Open `portfolio.html` in any modern web browser to view the page.
+
+## ✨ Features
+- **Navbar** with nav links, centered logo ("Portfolio2Grow"), and social icons (Instagram, Facebook, Twitter, LinkedIn)
+- **Hero heading** with the profile name
+- **Three-column layout** — Services list, circular profile photo, and bio/stats section
+- **Stats section** — years of experience and client count
+- **"Hire me" CTA button**
+- **Fully responsive** — columns stack into a single centered layout on smaller screens, with the photo moving to the top
+
+## 🛠️ Built With
+- HTML5
+- CSS3 (Flexbox, media queries, `aspect-ratio`)
+
+## 📱 Responsive Breakpoints
+| Breakpoint | Behavior |
+|---|---|
+| `> 900px` | Full three-column layout |
+| `≤ 900px` | Columns stack vertically, centered, photo moves to top |
+| `≤ 480px` | Smaller headings and tighter nav spacing for phones |
+
+## 🎨 Customization
+- **Profile photo:** Replace the `img src` inside `.photo-circle` with your own image.
+- **Services:** Edit the three `.service-item` blocks (icon, title, description) to update your offerings.
+- **Stats:** Update the numbers/labels inside `.stats` to reflect your real experience/clients.
+- **Social links:** Update the `href` attributes in `.socials` to point to your real profiles.
+
+## 🚀 Getting Started
+```bash
+git clone <your-repo-url>
+cd portfolio2grow
+# Just open portfolio.html in your browser — no build step required
+```
+
+
